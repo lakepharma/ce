@@ -7353,7 +7353,10 @@ if (! jSuites && typeof(require) === 'function') {
                                     } else if (e.keyCode == 113) {
                                         // Start edition with current content F2
                                         jexcel.current.openEditor(jexcel.current.records[rowId][columnId], false);
-                                    } else if ((e.keyCode == 8) ||
+                                    } else if(e.keyCode == 8 && jexcel.current.options.columns[columnId].type === 'html'){
+                                        jexcel.current.setValue(jexcel.current.highlighted, '');
+                                    }
+                                     else if ((e.keyCode == 8) ||
                                                (e.keyCode >= 48 && e.keyCode <= 57) ||
                                                (e.keyCode >= 96 && e.keyCode <= 111) ||
                                                (e.keyCode >= 187 && e.keyCode <= 190) ||
